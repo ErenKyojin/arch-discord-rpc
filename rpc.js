@@ -3,24 +3,26 @@ const discRPC = require('discord-rpc');
 const distro = require('distro-info');
 const RPC = new discRPC.Client({transport: 'ipc'});
 const refreshTime = 15000;
+const supportedDistros = ['arch', `centos`, `debian`, `elementary`, `fedora`, `kali`, `mageia`, `manjaro`, `mint`, `opensuse`];
 
 discRPC.register(clientId)
 
 async function activity()
 {
     if(RPC == false) return;
+    if(!supportedDistros.includes(distro.name())) return;
     RPC.setActivity({
 
         details: `Yeah i use ${distro.name()} btw`,
         state: `(and ${distro.desktop()} as my DE)`,
         startTimestamp: Date.now(),
-        largeImageKey: '1',
-        largeImageText: `Yeah my high IQ requires version ${distro.version()}`,
-        smallImageKey: '2',
+        largeImageKey: `${distro.name()}`,
+        largeImageText: `🔥 Yeah my high IQ requires version ${distro.version()}`,
+        smallImageKey: 'penguin',
         smallImageText: 'just a penguin',
         instance: false,
         buttons: [
-            {label: '🐧 git 🐧', url: 'https://github.com/ErenKyojin/arch-discord-rpc'}
+            {label: '🔥 git', url: 'https://github.com/ErenKyojin/arch-discord-rpc'}
         ]
 
     });
