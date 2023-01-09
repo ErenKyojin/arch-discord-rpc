@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "discord-rpc": "^4.0.1"
+    "discord-rpc": "^4.0.1",
+    "distro-info": "^2.0.0"
   }
 }

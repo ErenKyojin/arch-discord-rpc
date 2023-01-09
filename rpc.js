@@ -1,5 +1,6 @@
 const clientId = '1062108549922160690';
 const discRPC = require('discord-rpc');
+const distro = require('distro-info');
 const RPC = new discRPC.Client({transport: 'ipc'});
 const refreshTime = 15000;
 
@@ -10,16 +11,16 @@ async function activity()
     if(RPC == false) return;
     RPC.setActivity({
 
-        details: 'Using arch btw',
-        state: 'I\'m on ' + process.platform,
+        details: `Yeah i use ${distro.name()} btw`,
+        state: `(and ${distro.desktop()} as my DE)`,
         startTimestamp: Date.now(),
         largeImageKey: '1',
-        largeImageText: 'Not to brag but i\'m an arch user',
+        largeImageText: `Yeah my high IQ requires version ${distro.version()}`,
         smallImageKey: '2',
         smallImageText: 'just a penguin',
         instance: false,
         buttons: [
-            {label: '🐧', url: 'https://github.com/ErenKyojin/arch-discord-rpc'}
+            {label: '🐧 git 🐧', url: 'https://github.com/ErenKyojin/arch-discord-rpc'}
         ]
 
     });
